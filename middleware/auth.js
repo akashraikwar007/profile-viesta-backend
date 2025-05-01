@@ -14,11 +14,15 @@ function verifyJWT(req, res, next) {
       return res.status(401).json({ message: "Invalid authorization format. Use 'Bearer <token>'" });
     }
 
+
+
     const token = parts[1];
     console.log(
       'token:', token,
       'parts:', parts,
     );
+
+    
     
     if (!token) {
       return res.status(401).json({ message: "No token provided" });

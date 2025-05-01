@@ -98,7 +98,7 @@ app.use((err, req, res, next) => {
 // Auth section end
 
 // Start server
-const PORT = 8000;
+const PORT = 9000;
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );

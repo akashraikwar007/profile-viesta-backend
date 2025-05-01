@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 // Get base URL from environment variable or use default
-const BASE_URL = process.env.RENDER_EXTERNAL_URL || 'http://localhost:8000';
+const BASE_URL = process.env.RENDER_EXTERNAL_URL || 'http://localhost:9000';
 
 async function handleGetAllUsers(req, res) {
     try {
