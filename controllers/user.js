@@ -123,6 +123,13 @@ async function handleUpdateUserById(req, res) {
     try {
         console.log(`Updating user with id: ${req.params.id}`);
         const updateData = { ...req.body };
+
+        if (updateData.email) {
+            const existingUser = await User.findOne({ email: updateData.email });
+            if (existingUser && existingUser._id.toString() !== req.params.id.toString()) {
+                return res.status(400).json({ error: "Email already exists" });
+            }
+        }
         
         // If there's a file upload, add it to the update data
         if (req.file) {
@@ -202,7 +209,7 @@ async function handleCreateNewUser(req, res) {
 
         // Check if user with this email already exists
         const existingUser = await User.findOne({ email });
-        if (existingUser) {
+        if (existingUser && existingUser._id.toString() !== req.params.id.toString()) {
             return res.status(400).json({ error: "Email already exists" });
         }
       
